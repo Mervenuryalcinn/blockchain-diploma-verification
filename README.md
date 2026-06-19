@@ -56,6 +56,7 @@ Diploma bilgisi standart bir JSON formatında IPFS'e yüklenecek ve hash'i alın
   "graduationDate": "2026-06-15",
   "gpa": "3.05"
 }
+##
 ## 🏗️ Projenin Ana Parçaları
 
 ### 1. Smart Contract (Akıllı Kontrat)
