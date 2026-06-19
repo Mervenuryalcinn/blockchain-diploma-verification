@@ -71,6 +71,7 @@ struct Diploma {
     bytes32 dataHash;    // JSON verisinin hash'i
     bool isRevoked;      // Diploma iptal edildi mi?
 }
+##
 ### 2. IPFS Katmanı
 Diploma JSON dosyasını merkezi olmayan şekilde saklamak için kullanılır. Diploma hazırlandıktan sonra IPFS'e yüklenir ve IPFS bize bir CID verir. Bu CID ile veri her zaman tekrar bulunabilir.
 
