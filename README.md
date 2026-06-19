@@ -76,35 +76,28 @@ Diploma JSON dosyasını merkezi olmayan şekilde saklamak için kullanılır. D
 
 ### 3. Backend (Arka Plan)
 Node.js ve Express.js ile geliştirilen sistemin köprü katmanıdır. İki temel API uç noktasına sahiptir:
-
-* POST /issueDiploma: Diploma oluşturur. (JSON'u IPFS'e yükler, hash hesaplar, smart contract'ı çağırır).
-
-* POST /verifyDiploma: Diplomayı doğrular. (Gelen JSON'un hash'ini hesaplar ve kontrattaki ile karşılaştırır).
+* `POST /issueDiploma`: Diploma oluşturur (JSON'u IPFS'e yükler, hash hesaplar, smart contract'ı çağırır).
+* `POST /verifyDiploma`: Diplomayı doğrular (Gelen JSON'un hash'ini hesaplar ve kontrattaki ile karşılaştırır).
 
 ### 4. Frontend (Kullanıcı Arayüzü)
 Kullanıcının gördüğü iki temel ekrandan oluşur:
-
 * **Diploma Oluşturma Ekranı:** Üniversitenin öğrenci bilgilerini (Ad, No, Bölüm, GPA vb.) girdiği ve "Diploma Oluştur" dediği form.
-
 * **Diploma Doğrulama Ekranı:** JSON verisinin girilip "Doğrula" butonuna basıldığı ve "Geçerli", "Sahte" veya "İptal Edilmiş" sonucunun gösterildiği ekran.
-### 🔄 Genel Akış
-Diploma Oluşturma
-* Üniversite diploma bilgilerini forma girer.
 
-* Frontend bu bilgileri backend’e gönderir.
+---
 
-* Backend JSON oluşturur ve IPFS’e yükleyerek CID üretir.
+## 🔄 Genel Akış
 
-* Backend JSON hash’ini hesaplar.
+### Diploma Oluşturma
+1. Üniversite diploma bilgilerini forma girer.
+2. Frontend bu bilgileri backend’e gönderir.
+3. Backend JSON oluşturur ve IPFS’e yükleyerek CID üretir.
+4. Backend JSON hash’ini hesaplar.
+5. Backend smart contract’a CID + hash kaydeder.
+6. Kullanıcıya diploma ID / CID / doğrulama bilgisi döner.
 
-* Backend smart contract’a CID + hash kaydeder.
-
-* Kullanıcıya diploma ID / CID / doğrulama bilgisi
-Diploma Doğrulama
-* 1.Doğrulayıcı diploma JSON’unu sisteme girer.
-
-* 2.Backend bu JSON’un hash’ini tekrar hesaplar.
-
-* 3.Smart contract’tan kayıtlı hash alınır.
-
-* 4.İki hash karşılaştırılır ve sonuç ekranda gösterilir.
+### Diploma Doğrulama
+1. Doğrulayıcı diploma JSON’unu sisteme girer.
+2. Backend bu JSON’un hash’ini tekrar hesaplar.
+3. Smart contract’tan kayıtlı hash alınır.
+4. İki hash karşılaştırılır ve sonuç ekranda gösterilir.
